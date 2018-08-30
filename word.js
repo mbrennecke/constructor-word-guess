@@ -2,7 +2,9 @@ var Letter = require("./letter.js");
 
 var Word = function() {
 	this.dispWord = [];
-	this.theWord = function(newWord) {
+}
+
+Word.prototype.theWord = function(newWord) {
 		var check = [];
 		this.dispWord = newWord.split("");
 		this.dispWord.forEach(function(item){
@@ -11,9 +13,16 @@ var Word = function() {
 		});
 		this.dispWord = check;
 	}
+	
+Word.prototype.theChar = function(character) {
+	var sendLetter = new Letter(character);
+	console.log(sendLetter);
+	console.log(sendLetter.checkLetter(character));
 }
 
 var w = new Word;
 
 w.theWord("test");
+console.log(w.dispWord.join(""));
+w.theChar("t");
 console.log(w.dispWord.join(""));

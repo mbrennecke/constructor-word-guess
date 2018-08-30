@@ -1,5 +1,5 @@
 
-var Letter = function(guessLetter, checkLetter) {
+var Letter = function(guessLetter) {
 	this.guessLetter = guessLetter;
 	this.guessed = false;
 }
