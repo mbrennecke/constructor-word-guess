@@ -13,11 +13,8 @@ Letter.prototype.toString = function() {
 	};
 	
 Letter.prototype.checkLetter = function(toCheck) {
-	console.log(toCheck);
-	console.log(this.guessLetter);
 	if (toCheck == this.guessLetter) {
 		this.guessed = true;
-		console.log("true");
 	}
 };
 	
