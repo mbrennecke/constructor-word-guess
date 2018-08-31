@@ -12,24 +12,30 @@ function wordSelecter() {
 
 function wordGen() {
 	var toGuessWord = wordSelecter();
+	console.log(toGuessWord);
 	var letsPlay = new Word;
 	letsPlay.theWord(toGuessWord);
 	console.log("Generating word\n");
-	console.log(letsPlay.theWord);
+	console.log(letsPlay.dispWord.join(""));
+	wordGame(letsPlay);
+	
 }
 
-inquirer
-  .prompt([
+function wordGame(letsPlay) {
+	inquirer
+	.prompt([
 	{
-      type: "list",
-      message: "Which option would you like?",
-      choices: ["Find a concert", "Spotify a song", "Get info on a movie", 'Make Liri "do what it says"'],
-      name: "choice"
-    }
+	  type: "input",
+	  message: "Guess a letter.",
+	  name: "choice"
+	}
 	])
 	.then(function(inquirerResponse) {
-	//logging inputs and responses
-		log(inquirerResponse.choice);
-	//switch to manage user's choice
-		switcher(inquirerResponse.choice);
+		letsPlay.theChar(inquirerResponse.choice);
+		console.log(letsPlay.dispWord.join(""));
+		wordGame(letsPlay);
 	});
+	
+}
+
+wordGen();

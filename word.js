@@ -19,3 +19,4 @@ Word.prototype.theChar = function(character) {
 
 module.exports = Word;
 
+var w = new Word;
