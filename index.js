@@ -31,8 +31,13 @@ function wordGame(letsPlay) {
 	}
 	])
 	.then(function(inquirerResponse) {
-		letsPlay.theChar(inquirerResponse.choice);
+		var correct = letsPlay.theChar(inquirerResponse.choice);
+		console.log(correct);
 		console.log(letsPlay.dispWord.join(""));
+		
+		if (guesses == 0) {
+			return;
+		}
 		wordGame(letsPlay);
 	});
 	

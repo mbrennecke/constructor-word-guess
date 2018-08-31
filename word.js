@@ -13,7 +13,7 @@ Word.prototype.theWord = function(newWord) {
 	
 Word.prototype.theChar = function(character) {
 	for(var i = 0; i<this.dispWord.length; i++){
-		this.dispWord[i].checkLetter(character);
+		var correct = this.dispWord[i].checkLetter(character);
 	}
 }
 
