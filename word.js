@@ -12,11 +12,15 @@ Word.prototype.theWord = function(newWord) {
 }
 	
 Word.prototype.theChar = function(character) {
+	var correctReturn = false;
 	for(var i = 0; i<this.dispWord.length; i++){
 		var correct = this.dispWord[i].checkLetter(character);
+		if(correct == character) {
+			correctReturn = true;
+		}
 	}
+	return correctReturn;
 }
 
 module.exports = Word;
 
-var w = new Word;

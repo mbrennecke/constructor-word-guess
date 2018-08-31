@@ -34,7 +34,13 @@ function wordGame(letsPlay) {
 		var correct = letsPlay.theChar(inquirerResponse.choice);
 		console.log(correct);
 		console.log(letsPlay.dispWord.join(""));
-		
+		if (correct) {
+			console.log("CORRECT")
+		} else {
+			guesses--;
+			console.log("INCORRECT");
+			console.log("Guesses left: " + guesses);
+		}
 		if (guesses == 0) {
 			return;
 		}
