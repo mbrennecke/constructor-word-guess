@@ -6,7 +6,7 @@ var Letter = function(guessLetter) {
 
 Letter.prototype.toString = function() {
 		if (this.guessed) {
-			return this.guessLetter;
+			return this.guessLetter + " ";
 		} else {
 			return "_ ";
 		}
