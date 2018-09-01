@@ -6,6 +6,7 @@ var wordArr = ["above","able","ability","about","across","account","accept","acc
 var guesses = 9;
 var wordCheckArr;
 var wordCheck;
+var guessedLetters = [];
 
 function wordSelecter() {
 	var num = Math.floor(Math.random() * wordArr.length) +1;
@@ -36,12 +37,19 @@ function wordGame(letsPlay) {
 	.then(function(inquirerResponse) {
 		var val = inquirerResponse.choice;
 		if(!val.match(/^[a-zA-Z]+$/)){
-			console.log("Please enter a letter\n\n");
+			console.log("Please enter a letter\n");
 			console.log(letsPlay.dispWord.join(""));
 			wordGame(letsPlay);
-			
 			return;
 		}
+		
+		if (guessedLetters.indexOf(val) != -1){
+			console.log("Already guessed that letter\n");
+			console.log(letsPlay.dispWord.join(""));
+			wordGame(letsPlay);
+			return;
+		}
+		guessedLetters.push(val);
 		var truncLetter = val.slice(0,1).toLowerCase();
 		var correct = letsPlay.theChar(truncLetter);
 		var winCheck = letsPlay.dispWord.join("");
@@ -49,6 +57,8 @@ function wordGame(letsPlay) {
 		if (correct) {
 			if (winCheck == wordCheck){
 				console.log("Congratulations!\n\nHere's the next word\n");
+				guesses = 9;
+				guessedLetters = [];
 				wordGen();
 				return;
 			}
