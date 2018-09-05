@@ -45,26 +45,35 @@ function wordGame(letsPlay) {
 	}
 	])
 	.then(function(inquirerResponse) {
-		
+		//user reponse is received
 		var val = inquirerResponse.choice;
+		//check for only letters
 		if(!val.match(/^[a-zA-Z]+$/)){
 			console.log("Please enter a letter\n");
+			//redisplay word
 			console.log(letsPlay.dispWord.join(""));
 			wordGame(letsPlay);
 			return;
 		}
-		
+		//check for letters already guessed
 		if (guessedLetters.indexOf(val) != -1){
 			console.log("Already guessed that letter\n");
 			console.log(letsPlay.dispWord.join(""));
 			wordGame(letsPlay);
 			return;
 		}
+		//array for guessed letters is populated
 		guessedLetters.push(val);
+		//if more than one letter entered, only first letter accepted, also letters are made lowercase
 		var truncLetter = val.slice(0,1).toLowerCase();
+		//the letter is sent for the check
 		var correct = letsPlay.theChar(truncLetter);
+		//The win case is made using the word array from word and the displayed array and if they match
 		var winCheck = letsPlay.dispWord.join("");
 		console.log(winCheck + "\n");
+		//Setting for correct or incorrect of letter was challenging
+		//Letter is returned from the function and compared here against the entered letter
+		//Win case is also checked here. 
 		if (correct) {
 			if (winCheck == wordCheck){
 				console.log("Congratulations!\n\nHere's the next word\n");
